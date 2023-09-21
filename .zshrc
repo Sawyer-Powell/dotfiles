@@ -9,7 +9,7 @@ export PATH=$PATH:$HOME/.local/bin:$HOME/.npm.global/bin
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="Soliah"
+ZSH_THEME="gnzh"
 
 alias so='source ~/.zshrc; echo zsh sourced'
 alias vi='nvim'
@@ -21,6 +21,7 @@ alias ffh='file=$(find ~ | fzf); vi $file'
 alias ls='ls -lah'
 alias sus="systemctl suspend"
 alias tkill="tmux kill-session -t"
+alias emacs="emacsclient -c -a emacs"
 export FZF_DEFAULT_OPTS=""
 
 alias dotfiles='/run/current-system/sw/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
