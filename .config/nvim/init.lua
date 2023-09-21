@@ -1,7 +1,7 @@
 local vimrc = vim.fn.stdpath("config") .. "/plugins.vim"
 
 vim.cmd.source(vimrc)
-vim.cmd('colorscheme github_dark')
+vim.cmd('colorscheme tokyonight-night')
 vim.cmd('hi Normal guibg=NONE ctermbg=NONE')
 
 vim.cmd('set cursorline')

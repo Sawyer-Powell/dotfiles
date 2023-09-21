@@ -46,8 +46,10 @@ call plug#begin()
 	" Rose Pine theme
 	Plug 'projekt0n/github-nvim-theme'
 
-	Plug 'nvim-treesitter/nvim-treesitter',
-	Plug 'ThePrimeagen/harpoon',
+	Plug 'nvim-treesitter/nvim-treesitter'
+	Plug 'ThePrimeagen/harpoon'
 	Plug 'nvim-telescope/telescope.nvim'
+
+	Plug 'folke/tokyonight.nvim'
 
 call plug#end()
