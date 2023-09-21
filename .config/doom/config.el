@@ -58,7 +58,7 @@
 
 (setq highlight-indent-guides-character ?\|)
 (setq highlight-indent-guides-character-face 'highlight-indent-guides-character-face)
-(setq highlight-indent-guides-auto-character-face-perc 90)
+(setq highlight-indent-guides-auto-character-face-perc 40)
 (setq highlight-indent-guides-method 'character)
 (add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
 
@@ -67,8 +67,10 @@
 (setq org-roam-directory (file-truename "~/org-roam"))
 (org-roam-db-autosync-mode)
 (setq org-roam-mode-sections
-      (list #'org-roam-backlinks-section
+     (list #'org-roam-backlinks-section
             #'org-roam-reflinks-section))
+
+(setq org-agenda-files '("~/org-roam"))
 
 ;; Vim Stuff
 
