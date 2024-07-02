@@ -1,0 +1,4 @@
+#!/bin/bash
+
+mkdir /home/sawyer/selfies
+ffmpeg -f video4linux2 -s 640x480 -i /dev/video0 -ss 0:0:2 -frames 1 "/home/sawyer/selfies/$(date +%s).jpg"
