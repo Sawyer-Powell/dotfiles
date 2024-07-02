@@ -1,0 +1,19 @@
+name: gleaners
+root: /home/sawyer/sync/repos/work/gleaners-portal-code
+windows:
+  - editor: 
+      - i3-msg workspace 3
+      - code .
+      - i3-msg workspace 2
+      - nvim .
+  - git: lazygit
+  - shell:
+  - db:
+        - export DB="sqlserver://localhost:1433;Database=Gleaners;Trusted_Connection=False;TrustServerCertificate=True;User=sa;Password=MyVeryStrongPassword3!;"
+        - nvim db/console.sql
+  - run:
+        - cd Angular
+        - npm run start
+  - db-dock:
+      - sudo docker start -ai sql1
+
