@@ -2,9 +2,7 @@ name: gleaners
 root: /home/sawyer/sync/repos/work/gleaners-portal-code
 windows:
   - editor: 
-      - i3-msg workspace 3
       - code .
-      - i3-msg workspace 2
       - nvim .
   - git: lazygit
   - shell:
