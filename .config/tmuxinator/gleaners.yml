@@ -1,5 +1,5 @@
 name: gleaners
-root: /home/sawyer/sync/repos/work/gleaners-portal-code
+root: /home/sawyer/Sync/repos/gleaners-portal-code
 windows:
   - editor: 
       - code .

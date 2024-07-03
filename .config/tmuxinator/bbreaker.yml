@@ -1,7 +1,7 @@
 # /home/sawyer/.config/tmuxinator/bbreaker.yml
 
 name: bbreaker
-root: ~/sync/repos/ball-breaker
+root: ~/Sync/repos/ball-breaker
 
 windows:
   - editor:
@@ -9,5 +9,5 @@ windows:
   - git:
     - lazygit
   - ray: 
-    - cd ~/software/raylib 
+    - cd ~/Software/raylib 
     - nvim .
