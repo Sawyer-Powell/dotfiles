@@ -6,12 +6,18 @@ windows:
       - nvim .
   - git: lazygit
   - shell:
-  - db:
+  - sql:
         - export DB="sqlserver://localhost:1433;Database=Gleaners;Trusted_Connection=False;TrustServerCertificate=True;User=sa;Password=MyVeryStrongPassword3!;"
         - nvim db/console.sql
   - run:
-        - cd Angular
-        - npm run start
-  - db-dock:
+        layout: even-horizontal
+        panes: 
+            - angular:
+                - cd Angular
+                - npm run start 
+            - designs:
+                - cd /home/sawyer/Sync/repos/gleaners-portal-designs
+                - python -m http.server
+  - db:
       - sudo docker start -ai sql1
 
