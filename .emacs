@@ -18,11 +18,10 @@
  '(line-number ((t (:background "#1d2021"))))
  '(line-number-current-line ((t (:background "#3c3836"))))
  '(mode-line ((t (:background "#3a3a3a"))))
-
  '(mode-line-inactive ((t (:background "#303030")))))
 
-(load-file "~/.emacs.d/typst.el")
-(load-file "~/.emacs.d/script-runner.el")
+;; (load-file "~/.emacs.d/typst.el")
+;; (load-file "~/.emacs.d/script-runner.el")
 
 ;; Including melpa support
 (require 'package)
@@ -31,12 +30,13 @@
 (package-initialize)
 
 ;; Machine specific variables
-(setq sawyer/org-roam-directory "~/sync/org") 
-(setq sawyer/org-agenda-files '("~/sync/org/todos.org"))
-(setq sawyer/repos-directory "~/sync/repos")
+(setq sawyer/org-roam-directory "~/Sync/org") 
+(setq sawyer/org-agenda-files '("~/Sync/org/todos.org"))
+(setq sawyer/repos-directory "~/Sync/repos")
 
 ;; Aesthetics
-(setq default-frame-alist '((font . "JetBrainsMono-10")))
+(setq default-frame-alist '((font . "JetBrainsMono-11")))
+(add-to-list 'default-frame-alist '(undecorated . t))
 (tool-bar-mode -1)
 (menu-bar-mode -1)
 (scroll-bar-mode -1)

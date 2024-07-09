@@ -1,0 +1,129 @@
+# [Created by task 2.6.2 7/6/2024 11:44:35]
+# Taskwarrior program configuration file.
+# For more documentation, see https://taskwarrior.org or try 'man task', 'man task-color',
+# 'man task-sync' or 'man taskrc'
+
+# Here is an example of entries that use the default, override and blank values
+#   variable=foo   -- By specifying a value, this overrides the default
+#   variable=      -- By specifying no value, this means no default
+#   #variable=foo  -- By commenting out the line, or deleting it, this uses the default
+
+# You can also refence environment variables:
+#   variable=$HOME/task
+#   variable=$VALUE
+
+# Use the command 'task show' to see all defaults and overrides
+
+# Files
+data.location=/home/sawyer/.task
+
+# To use the default location of the XDG directories,
+# move this configuration file from ~/.taskrc to ~/.config/task/taskrc and uncomment below
+
+#data.location=~/.local/share/task
+#hooks.location=~/.config/task/hooks
+
+# Color theme (uncomment one to use)
+#include light-16.theme
+#include light-256.theme
+#include dark-16.theme
+#include dark-256.theme
+#include dark-red-256.theme
+#include dark-green-256.theme
+#include dark-blue-256.theme
+#include dark-violets-256.theme
+#include dark-yellow-green.theme
+#include dark-gray-256.theme
+#include dark-gray-blue-256.theme
+#include solarized-dark-256.theme
+#include solarized-light-256.theme
+include no-color.theme
+
+#+---------+
+#+ General +
+#+---------+
+color.label=
+color.label.sort=
+color.alternate=
+color.header=bold magenta
+color.footnote=yellow
+color.warning=bold black on yellow
+color.error=bold white on red
+color.debug=magenta
+
+#+-------------+
+#+ Task States +
+#+-------------+
+color.completed=gray9
+color.deleted=bold gray9
+color.active=bold black on bright green
+color.until=
+color.blocked=gray6
+color.blocking=white
+
+#+----------+
+#+ Projects +
+#+----------+
+color.project.none=
+
+#+----------+
+#+ Priority +
+#+----------+
+color.uda.priority.H=bold
+color.uda.priority.M=bold yellow
+color.uda.priority.L=
+
+#+------+
+#+ Tags +
+#+------+
+color.tag.next=bold bright yellow on black
+color.tag.none=
+color.tagged=
+
+#+-----+
+#+ Due +
+#+-----+
+color.due=white
+color.due.today=bold white
+color.overdue=bold bright red
+
+#+---------+
+#+ Reports +
+#+---------+
+color.burndown.done=bold black on green
+color.burndown.pending=black on red
+color.burndown.started=black on yellow
+
+color.history.add=bold black on blue
+color.history.delete=bright white on bold black
+color.history.done=bold black on cyan
+
+color.summary.background=bright white on black
+color.summary.bar=black on cyan
+
+#+----------+
+#+ Calendar +
+#+----------+
+color.calendar.due=bold black on blue
+color.calendar.due.today=bold black on white
+color.calendar.holiday=bold blue on white
+color.calendar.overdue=white on red
+color.calendar.today=bold black on cyan
+color.calendar.weekend=bright white on bright black
+color.calendar.weeknumber=bold black
+
+#+-----------------+
+#+ Synchronization +
+#+-----------------+
+color.sync.added=green
+color.sync.changed=yellow
+color.sync.rejected=red
+
+#+------+
+#+ Undo +
+#+------+
+color.undo.after=green
+color.undo.before=red
+
+news.version=3.0.2
+context.che.read=+scholartrack or +chedss or +che

@@ -3,4 +3,4 @@ decorations = "None"
 padding = { x = 10, y = 10 }
 
 [font]
-normal= { family = "JetBrains Mono", style = "Regular" }
+normal= { family = "JetBrainsMono NF", style = "Regular" }

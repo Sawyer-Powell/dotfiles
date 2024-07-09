@@ -1,3 +1,3 @@
-path="/home/sawyer/books"
+path="/home/sawyer/Calibre Library/"
 
-zathura "$path/$(ls "$path" | dmenu -i -fn 'JetBrainsMono-10' -l 10 -c)" &
+ls "$path" | fzf

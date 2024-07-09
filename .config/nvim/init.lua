@@ -1,3 +1,4 @@
+--local filetype = require "filetype"
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
@@ -12,6 +13,8 @@ vim.opt.showmode = false
 
 -- Enable break indent
 vim.opt.breakindent = true
+
+vim.o.wrap = false
 
 -- Save undo history
 vim.opt.undofile = true
@@ -106,6 +109,9 @@ vim.api.nvim_create_autocmd("BufEnter", {
 	command = "set tabstop=2"
 })
 
+vim.opt.conceallevel = 2
+vim.opt.concealcursor = 'nc'
+
 -- installing lazy
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -173,7 +179,8 @@ require("lazy").setup({
 			vim.keymap.set("n", "<leader>sg", builtin.live_grep, { desc = "[S]earch by [G]rep" })
 			vim.keymap.set("n", "<leader>sd", builtin.diagnostics, { desc = "[S]earch [D]iagnostics" })
 			vim.keymap.set("n", "<leader>sr", builtin.resume, { desc = "[S]earch [R]esume" })
-			vim.keymap.set("n", "<leader>s.", builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
+			vim.keymap.set("n", "<leader>s.", builtin.oldfiles,
+				{ desc = '[S]earch Recent Files ("." for repeat)' })
 			vim.keymap.set("n", "<leader><leader>", builtin.buffers, { desc = "[ ] Find existing buffers" })
 
 			vim.keymap.set("n", "<leader>s/", function()
@@ -210,7 +217,8 @@ require("lazy").setup({
 				group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
 				callback = function(event)
 					local map = function(keys, func, desc)
-						vim.keymap.set("n", keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
+						vim.keymap.set("n", keys, func,
+							{ buffer = event.buf, desc = "LSP: " .. desc })
 					end
 
 					local client = vim.lsp.get_client_by_id(event.data.client_id)
@@ -260,6 +268,7 @@ require("lazy").setup({
 				tsserver = {},
 				omnisharp = {},
 				marksman = {},
+				pyright = {},
 				lua_ls = {
 					-- cmd = {...},
 					-- filetypes { ...},
@@ -388,8 +397,9 @@ require("lazy").setup({
 				ensure_installed = { "bash", "c", "html", "lua", "markdown", "vim", "vimdoc", "go" },
 				-- Autoinstall languages that are not installed
 				auto_install = true,
-				highlight = { enable = false },
-				-- indent = { enable = true },
+				highlight = { enable = true },
+				indent = { enable = true },
+				ignore_install = { 'org' }
 			})
 		end,
 	},
@@ -452,7 +462,46 @@ require("lazy").setup({
 		end
 	},
 	{
-		"sakhnik/nvim-gdb"
+		"mfussenegger/nvim-dap",
+		config = function()
+			local dap = require('dap')
+			dap.adapters.gdb = {
+				id = 'gdb',
+				args = { '-i', 'dap' },
+				type = 'executable',
+				command = '/usr/bin/gdb',
+			}
+
+			vim.keymap.set('n', '<leader>dt', dap.terminate);
+			vim.keymap.set('n', '<leader>dc', dap.continue);
+			vim.keymap.set('n', "<F8>", dap.clear_breakpoints);
+			vim.keymap.set('n', "<F9>", dap.toggle_breakpoint);
+			vim.keymap.set('n', "<F10>", dap.step_over);
+			vim.keymap.set('n', "<F11>", dap.step_into);
+			vim.keymap.set('n', "<F12>", dap.step_out);
+
+			vim.keymap.set('n', "<leader>dr", dap.repl.toggle);
+		end
+	},
+	{
+		"rcarriga/nvim-dap-ui",
+		dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
+		config = function()
+			local dap, dapui = require('dap'), require('dapui')
+			dapui.setup()
+			dap.listeners.before.attach.dapui_config = function()
+				dapui.open()
+			end
+			dap.listeners.before.launch.dapui_config = function()
+				dapui.open()
+			end
+			dap.listeners.before.event_terminated.dapui_config = function()
+				dapui.close()
+			end
+			dap.listeners.before.event_exited.dapui_config = function()
+				dapui.close()
+			end
+		end
 	},
 	{
 		'windwp/nvim-autopairs',
@@ -460,5 +509,25 @@ require("lazy").setup({
 		config = true
 		-- use opts = {} for passing setup options
 		-- this is equalent to setup({}) function
-	}
+	},
+	{
+		'nvim-orgmode/orgmode',
+		branch = 'nightly',
+		event = 'VeryLazy',
+		ft = { 'org' },
+		config = function()
+			-- Setup orgmode
+			require('orgmode').setup_ts_grammar()
+			require('orgmode').setup({
+				--org_agenda_files = '~/Sync/org-normal/**/*',
+				--org_default_notes_file = '~/orgfiles/refile.org',
+				org_indent_Mode = 'indent'
+			})
+		end,
+	},
+	{
+		"lukas-reineke/headlines.nvim",
+		dependencies = "nvim-treesitter/nvim-treesitter",
+		config = true,     -- or `opts = {}`
+	},
 }, {})

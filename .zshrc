@@ -1,4 +1,4 @@
-export PATH=$PATH:/home/sawyer/go/bin:/home/sawyer/.dotnet/tools:/home/sawyer/bin:/usr/local/go/bin:/usr/local/zig:/opt/mssql-tools18/bin
+export PATH=$PATH:/home/sawyer/.local/bin:/home/sawyer/go/bin:/home/sawyer/.dotnet/tools:/home/sawyer/bin:/usr/local/go/bin:/usr/local/zig:/opt/mssql-tools18/bin
 
 export EDITOR=nvim
 # Set a color in the terminal palette.
@@ -42,6 +42,7 @@ set_color 22 79740e # dark green
 set_color 52 9d0006 # dark red
 set_color 53 8f3f71 # dark magenta 
 
+
 PS1=$'%F{11}%n@%m%f %F{15}%*%f %F{14}%(4~|.../%3~|%~)%f \n\e[33m\u26A1\e[m '
 
 bindkey -v
@@ -52,6 +53,29 @@ alias vi='nvim'
 alias gleaners='cd /mnt/bigdata/Backup/Sync/sawyers-surface-backup/repos/gleaners'
 alias repos='cd /mnt/bigdata/Backup/Sync/repos'
 alias tm='tmuxinator'
+alias open='xdg-open'
+
+# TaskWarrior
+
+alias t='task'
+alias in="task add +in"
+alias ti='task +in +PENDING'
+
+tickle () {
+	deadline = $1
+	shift
+	in +tickle wait:$deadline $@
+}
+alias tick=tickle
+
+alias ta='task add'
+alias tm='task modify'
+alias td='task done'
+alias tx='task delete'
+alias tn='task modify +next'
+alias tnn='task modify -next'
+alias ts='task start'
+alias tss='task stop'
 
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:~/.local/lib/mojo
 export PATH=$PATH:~/.modular/pkg/packages.modular.com_mojo/bin/
