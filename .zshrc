@@ -42,7 +42,6 @@ set_color 22 79740e # dark green
 set_color 52 9d0006 # dark red
 set_color 53 8f3f71 # dark magenta 
 
-
 PS1=$'%F{11}%n@%m%f %F{15}%*%f %F{14}%(4~|.../%3~|%~)%f \n\e[33m\u26A1\e[m '
 
 bindkey -v
@@ -57,8 +56,11 @@ alias open='xdg-open'
 
 # TaskWarrior
 
-alias t='task'
+alias t='task -in -maybe -BLOCKED'
+alias tt='task all status:pending or status:waiting'
 alias in="task add +in"
+alias maybe="task add +maybe"
+alias tc="task +maybe"
 alias ti='task +in +PENDING'
 
 tickle () {
@@ -68,8 +70,17 @@ tickle () {
 }
 alias tick=tickle
 
-alias ta='task add'
+alias ta='task add +next'
 alias tm='task modify'
+
+task_wait () {
+	task modify +waiting -next -in $1 wait:$2
+	if [[ "${*:3}" != "" ]]; then
+		task $1 annotate "${@:3}" 
+	fi
+}
+alias tw=task_wait
+
 alias td='task done'
 alias tx='task delete'
 alias tn='task modify +next'
@@ -77,10 +88,11 @@ alias tnn='task modify -next'
 alias ts='task start'
 alias tss='task stop'
 
+alias so='source ~/.zshrc'
+
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:~/.local/lib/mojo
 export PATH=$PATH:~/.modular/pkg/packages.modular.com_mojo/bin/
+export BW_SESSION="$(cat /home/sawyer/bw-session)"
 
 # Automatically attach to "base" tmux session
-if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
-    tmux attach-session -t base || tmux new-session -s base
-fi
+fuzzy-mux.py base

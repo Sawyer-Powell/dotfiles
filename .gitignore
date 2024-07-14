@@ -1,2 +1,27 @@
 .config/aichat/config.yaml
 .config/beets/state.pickle
+.config/libreoffice/4
+.config/evolution/sources
+.config/enchant
+.config/dconf
+.config/Bitwarden CLI
+.config/goa-1.0
+.config/gtk-3.0
+.config/ibus/bus
+.config/nicotine
+.config/thorium
+.config/pulse
+.config/zed
+.config/.gsd-keyboard.settings-ported
+.config/GNOME-xdg-terminals.list
+.config/gnome-initial-setup-done
+.config/monitors.xml
+.config/monitors.xml~
+.config/user-dirs.dirs
+.config/user-dirs.locale
+.config/xdg-terminals.list
+.config/beets
+bin/bw
+bin/script
+bin/taskfzf
+bin/taskwarrior-tui

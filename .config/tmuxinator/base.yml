@@ -1,0 +1,9 @@
+# /home/sawyer/.config/tmuxinator/base.yml
+
+name: base
+root: ~/
+
+windows:
+  - shell:
+  - aichat: aichat -m openai:gpt-4o
+  - init.lua: nvim ~/.config/nvim/init.lua

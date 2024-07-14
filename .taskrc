@@ -59,7 +59,7 @@ color.deleted=bold gray9
 color.active=bold black on bright green
 color.until=
 color.blocked=gray6
-color.blocking=white
+color.blocking=bold bright red
 
 #+----------+
 #+ Projects +

@@ -1,0 +1,9 @@
+# /home/sawyer/.config/tmuxinator/amble.yml
+
+name: amble
+root: ~/Sync/repos/amble
+
+windows:
+  - vi: 
+    - nvim .
+  - shell:
