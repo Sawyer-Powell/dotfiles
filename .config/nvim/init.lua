@@ -367,8 +367,10 @@ require("lazy").setup({
 						luasnip.lsp_expand(args.body)
 					end,
 				},
+				performance = {
+					debounce = 200,
+				},
 				completion = {
-					keyword_length = 3,
 					completeopt = 'menu,menuone,noinsert'
 				},
 
@@ -613,5 +615,8 @@ require("lazy").setup({
 			vim.keymap.set('n', "<leader>gg", ":GpChatToggle popup");
 			-- shortcuts might be setup here (see Usage > Shortcuts in Readme)
 		end,
+	},
+	{ -- task runner
+		"tpope/vim-dispatch",
 	}
 }, {})

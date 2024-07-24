@@ -7,3 +7,4 @@ windows:
   - shell:
   - aichat: aichat -m openai:gpt-4o
   - init.lua: nvim ~/.config/nvim/init.lua
+  - emacs: emacs -nw

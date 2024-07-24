@@ -2,6 +2,7 @@
 import subprocess
 import os
 import sys
+import time
 
 sessions = subprocess.run(
     ['tmux', 'list-sessions', '-F', '#{session_name}'],
@@ -48,6 +49,8 @@ def select_session():
 
     if (selection in tmuxinator_files):
         subprocess.run(['tmuxinator', selection])
+        time.sleep(1)
+        subprocess.run(['tmux', 'switch-client', '-t', selection])
 
 def open_session(session, tmuxinator_files):
     if (session in sessions):

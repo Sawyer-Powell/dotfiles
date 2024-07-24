@@ -1,21 +1,25 @@
 name: gleaners
-root: /home/sawyer/Sync/repos/gleaners-portal-code
+root: /home/sawyer/Sync/repos/gleaners
 windows:
   - editor: 
       - nvim .
-  - git: lazygit
+  - git: 
+      - cd gleaners-portal-code
+      - lazygit
   - shell:
   - sql:
+        - cd gleaners-portal-code
         - export DB="sqlserver://localhost:1433;Database=Gleaners;Trusted_Connection=False;TrustServerCertificate=True;User=sa;Password=MyVeryStrongPassword3!;"
         - nvim db/console.sql
   - run:
         layout: even-horizontal
         panes: 
             - angular:
+                - cd gleaners-portal-code
                 - cd Angular
                 - npm run start 
             - designs:
-                - cd /home/sawyer/Sync/repos/gleaners-portal-designs
+                - cd gleaners-portal-designs
                 - python -m http.server
   - db:
       - sudo docker start -ai sql1
