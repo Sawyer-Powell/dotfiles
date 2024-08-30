@@ -1,0 +1,5 @@
+#!/bin/bash
+
+a=$(fd . '.sawyer' | fzf); 
+
+kitten @ launch --cwd $(pwd) $a

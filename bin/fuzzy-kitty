@@ -1,0 +1,5 @@
+#!/bin/bash
+
+a=$(fd . 'Sync/repos' --max-depth 2 | fzf); 
+
+kitten @ launch --type tab --tab-title $(basename $a) --cwd $a nvim
