@@ -1,25 +1,8 @@
 export PATH=$PATH:/home/sawyer/.local/bin:/home/sawyer/go/bin:/home/sawyer/.dotnet/tools:/home/sawyer/bin:/usr/local/go/bin:/usr/local/zig:/opt/mssql-tools18/bin
 
 export EDITOR=nvim
-# Set a color in the terminal palette.
-# \param 1 The index in the pallete.
-# \param 2 is a hexadecimal RGB color code.
-function set_color {
-	if [ "$TERM" = "linux" ]; then
-		[ $1 -lt 16 ] && printf $'\e]P%X%s' "$1" "$2"
-	else
-		printf $'\e]4;%s;#%s\e\\' "$1" "$2"
-	fi
-}
 
-local black=1d2021
-local white=f9f5d7
-
-# Set default foreground / background colors for terminals that support it.
-printf "\e]10;#$white"
-printf "\e]11;#$black"
-
-PS1=$'%F{11}%n@%m%f 🐢 %F{15}%*%f %F{14}%(4~|.../%3~|%~)%f \n\e[33m \e[m '
+PS1=$'%F{11}%n@%m%f 🐢 %F{14}%(4~|.../%3~|%~)%f \n\e[33m \e[m '
 
 bindkey -v
 
@@ -70,5 +53,3 @@ alias clip='xclip -selection clipboard'
 alias img-dl='xclip -selection clibpard > temp; aria2c -i temp -d "Pictures/$(date "+%H-%M-%S--%d--%Y")" ; rm temp'
 
 export BW_SESSION="$(cat /home/sawyer/bw-session)"
-
-# Automatically attach to "base" tmux session

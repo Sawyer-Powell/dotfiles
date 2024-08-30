@@ -80,12 +80,15 @@ vim.keymap.set("n", "<leader>l", "<C-w><C-l>", { desc = "Move focus to the right
 vim.keymap.set("n", "<leader>j", "<C-w><C-j>", { desc = "Move focus to the lower window" })
 vim.keymap.set("n", "<leader>k", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 
+-- Swaps to the previous buffer
+vim.keymap.set("n", "<leader><Esc>", ":buffer #<Enter>", { desc = "Split window vertically" })
+
 vim.keymap.set("n", "<leader>/", "<C-w><C-v>", { desc = "Split window vertically" })
 vim.keymap.set("n", "<leader>.", "<C-w><C-s>", { desc = "Split window horizontally" })
 vim.keymap.set("n", "<leader>;", ":only<Enter>", { desc = "Close all but this window" })
 vim.keymap.set("n", "<leader>q", "<C-w><C-q>", { desc = "Close this window" })
 
-vim.keymap.set("n", "<leader>bd", ":bd!<Enter>", { desc = "Delete buffer" })
+vim.keymap.set("n", "<leader>ww", ":bd<Enter>", { desc = "Delete buffer" })
 
 vim.keymap.set("n", "<leader>t", ":term<Enter>", { desc = "Open terminal" })
 
@@ -173,7 +176,8 @@ require("lazy").setup({
 			local builtin = require("telescope.builtin")
 			vim.keymap.set("n", "<leader>sh", builtin.help_tags, { desc = "[S]earch [H]elp" })
 			vim.keymap.set("n", "<leader>sk", builtin.keymaps, { desc = "[S]earch [K]eymaps" })
-			vim.keymap.set("n", "<leader>sf", builtin.find_files, { desc = "[S]earch [F]iles" })
+			vim.keymap.set("n", "<leader>sf", function() builtin.find_files({ hidden = true }) end,
+				{ desc = "[S]earch [F]iles" })
 			vim.keymap.set("n", "<leader>ss", builtin.builtin, { desc = "[S]earch [S]elect Telescope" })
 			vim.keymap.set("n", "<leader>sp", builtin.git_files, { desc = "[S]earch [P]roject Telescope" })
 			vim.keymap.set("n", "<leader>sw", builtin.grep_string, { desc = "[S]earch current [W]ord" })
@@ -581,26 +585,6 @@ require("lazy").setup({
 		config = true
 		-- use opts = {} for passing setup options
 		-- this is equalent to setup({}) function
-	},
-	{
-		'nvim-orgmode/orgmode',
-		branch = 'nightly',
-		event = 'VeryLazy',
-		ft = { 'org' },
-		config = function()
-			-- Setup orgmode
-			require('orgmode').setup_ts_grammar()
-			require('orgmode').setup({
-				--org_agenda_files = '~/Sync/org-normal/**/*',
-				--org_default_notes_file = '~/orgfiles/refile.org',
-				org_indent_Mode = 'indent'
-			})
-		end,
-	},
-	{
-		"lukas-reineke/headlines.nvim",
-		dependencies = "nvim-treesitter/nvim-treesitter",
-		config = true, -- or `opts = {}`
 	},
 	-- lazy.nvim
 	{

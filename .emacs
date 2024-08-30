@@ -7,7 +7,7 @@
    '("d445c7b530713eac282ecdeea07a8fa59692c83045bf84dd112dd738c7bcad1d" "d80952c58cf1b06d936b1392c38230b74ae1a2a6729594770762dc0779ac66b7" default))
  '(initial-scratch-message ";; Go crazy")
  '(package-selected-packages
-   '(corfu jupyter markdown-mode vterm-toggle vterm ripgrep nix-mode flycheck-golangci-lint flycheck vertico eglot-booster elm-mode emacsql-sqlite evil gruvbox-theme org-roam rainbow-mode web-mode zig-mode))
+   '(slime corfu jupyter markdown-mode vterm-toggle vterm ripgrep nix-mode flycheck-golangci-lint flycheck vertico eglot-booster elm-mode emacsql-sqlite evil gruvbox-theme org-roam rainbow-mode web-mode zig-mode))
  '(package-vc-selected-packages
    '((eglot-booster :vc-backend Git :url "https://github.com/jdtsmith/eglot-booster"))))
 (custom-set-faces
@@ -139,6 +139,10 @@
 (use-package web-mode
   :config
   (add-hook 'web-mode-hook (lambda () (setq tab-width 2))))
+
+(use-package slime
+  :config
+  (setq inferior-lisp-program "/usr/bin/sbcl"))
 
 (use-package corfu
   :config
