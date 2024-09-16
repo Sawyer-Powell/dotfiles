@@ -1,5 +1,5 @@
 export PATH=$PATH:/home/sawyer/.local/bin:/home/sawyer/go/bin:/home/sawyer/.dotnet/tools:/home/sawyer/bin:/usr/local/go/bin:/usr/local/zig:/opt/mssql-tools18/bin
-source ~/.upekkha_prompt
+source ~/.prompt
 
 export EDITOR=nvim
 
