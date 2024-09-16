@@ -1,4 +1,5 @@
 export PATH=$PATH:/home/sawyer/.local/bin:/home/sawyer/go/bin:/home/sawyer/.dotnet/tools:/home/sawyer/bin:/usr/local/go/bin:/usr/local/zig:/opt/mssql-tools18/bin
+source ~/.upekkha_prompt
 
 export EDITOR=nvim
 
@@ -19,8 +20,6 @@ autoload -U up-line-or-beginning-search down-line-or-beginning-search
 autoload -Uz edit-command-line
 zle -N edit-command-line
 bindkey '^X^E' edit-command-line
-
-PS1=$'%F{11}%n@%m%f 🐢 %F{14}%(4~|.../%3~|%~)%f \n\e[33m \e[m '
 
 bindkey -v
 
