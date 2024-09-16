@@ -2,6 +2,24 @@ export PATH=$PATH:/home/sawyer/.local/bin:/home/sawyer/go/bin:/home/sawyer/.dotn
 
 export EDITOR=nvim
 
+HISTFILE=~/.zsh_history
+
+HISTSIZE=10000
+SAVEHIST=10000
+
+setopt SHARE_HISTORY
+setopt APPEND_HISTORY
+setopt INC_APPEND_HISTORY
+setopt HIST_IGNORE_DUPS
+
+autoload -Uz compinit
+compinit
+autoload -U up-line-or-beginning-search down-line-or-beginning-search
+
+autoload -Uz edit-command-line
+zle -N edit-command-line
+bindkey '^X^E' edit-command-line
+
 PS1=$'%F{11}%n@%m%f 🐢 %F{14}%(4~|.../%3~|%~)%f \n\e[33m \e[m '
 
 bindkey -v
@@ -53,3 +71,23 @@ alias clip='xclip -selection clipboard'
 alias img-dl='xclip -selection clibpard > temp; aria2c -i temp -d "Pictures/$(date "+%H-%M-%S--%d--%Y")" ; rm temp'
 
 export BW_SESSION="$(cat /home/sawyer/bw-session)"
+
+alias start_conda="/home/sawyer/miniconda3/etc/profile.d/conda.sh"
+
+export CONDA_AUTO_ACTIVATE_BASE=false
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/sawyer/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/sawyer/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/sawyer/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/sawyer/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
